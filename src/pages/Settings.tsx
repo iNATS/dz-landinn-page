@@ -34,143 +34,118 @@ export default function Settings() {
   if (!profile) return null;
 
   return (
-    <div className="min-h-screen bg-[#F2F2F7] safe-top pb-10">
-      <header className="px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/[0.05]">
-        <button onClick={() => navigate("/dashboard")} className="p-2 -mr-2">
-          <ChevronLeft className="text-emerald-600 rotate-180" />
+    <div className="min-h-screen bg-[#F2F2F7] safe-top pb-32">
+      <header className="px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <button onClick={() => navigate("/dashboard")} className="p-2 -mr-2 text-emerald-600 active:opacity-50 transition-opacity">
+          <ChevronLeft className="rotate-180" size={24} />
         </button>
-        <h1 className="text-lg font-bold text-[#1C1C1E]">الإعدادات</h1>
-        <button onClick={handleSave} className="text-emerald-600 font-bold uppercase text-xs tracking-widest">حفظ</button>
+        <h1 className="text-[17px] font-bold text-[#1C1C1E]">إعدادات المتجر</h1>
+        <button onClick={handleSave} className="text-emerald-600 font-bold text-[17px] active:opacity-50 transition-opacity">حفظ</button>
       </header>
 
-      {/* Tabs */}
-      <div className="px-6 py-6 flex gap-2 overflow-x-auto no-scrollbar bg-white/30">
-        {[
-          { id: "profile", label: "الملف الشخصي", icon: User },
-          { id: "shipping", label: "الشحن والسياسات", icon: Truck },
-          { id: "marketing", label: "التسويق", icon: Globe },
-        ].map(tab => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id as any)}
-            className={cn(
-              "flex items-center gap-2 px-4 py-2 rounded-full font-bold text-[10px] uppercase tracking-wider whitespace-nowrap transition-all",
-              activeTab === tab.id ? "bg-emerald-500 text-white shadow-none" : "bg-white text-black/40 border border-black/[0.05]"
-            )}
-          >
-            <tab.icon size={14} />
-            {tab.label}
-          </button>
-        ))}
+      {/* Profile Header */}
+      <div className="px-6 py-8 flex flex-col items-center">
+        <div className="w-24 h-24 rounded-full bg-white border border-black/5 shadow-sm p-1 mb-4">
+          <div className="w-full h-full rounded-full bg-emerald-500 flex items-center justify-center text-white text-3xl font-black">
+            {profile.companyName[0]}
+          </div>
+        </div>
+        <h2 className="text-xl font-black text-[#1C1C1E]">{profile.companyName}</h2>
+        <p className="text-[#8E8E93] text-[13px] font-medium mt-1">{profile.email}</p>
       </div>
 
-      <main className="px-6 space-y-6 mt-6">
+      {/* Tabs / Segmented Control */}
+      <div className="px-6 pb-6">
+        <div className="bg-[#E3E3E8] p-1 rounded-xl flex">
+          {[
+            { id: "profile", label: "الملف", icon: User },
+            { id: "shipping", label: "الشحن", icon: Truck },
+            { id: "marketing", label: "التسويق", icon: Globe },
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={cn(
+                "flex-1 flex items-center justify-center gap-2 py-2 rounded-[10px] text-[13px] font-bold transition-all",
+                activeTab === tab.id 
+                  ? "bg-white text-[#1C1C1E] shadow-sm" 
+                  : "text-[#8E8E93]"
+              )}
+            >
+              <tab.icon size={14} />
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <main className="px-6 space-y-6">
         {activeTab === "profile" && (
           <section className="space-y-6">
-            <GlassCard className="space-y-4 border-black/[0.05]">
-              <div className="flex items-center gap-3 pb-2 border-b border-black/[0.05] mb-2">
-                <Building className="text-emerald-600" size={20} />
-                <h2 className="text-sm font-bold text-[#1C1C1E]">معلومات المتجر</h2>
-              </div>
-              <div className="space-y-4">
-                <InputGroup label="اسم الشركة / المتجر" value={profile.companyName} onChange={v => setProfile({...profile, companyName: v})} />
-                <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label className="px-4 text-[13px] font-medium text-[#8E8E93] uppercase tracking-tight">معلومات المتجر</label>
+              <div className="bg-white rounded-[20px] overflow-hidden border border-black/5 divide-y divide-black/[0.05]">
+                <div className="p-4"><InputGroup label="اسم المتجر" value={profile.companyName} onChange={v => setProfile({...profile, companyName: v})} /></div>
+                <div className="p-4 grid grid-cols-2 gap-4">
                   <InputGroup label="الاسم الأول" value={profile.firstName} onChange={v => setProfile({...profile, firstName: v})} />
                   <InputGroup label="اللقب" value={profile.lastName} onChange={v => setProfile({...profile, lastName: v})} />
                 </div>
               </div>
-            </GlassCard>
+            </div>
 
-            <GlassCard className="space-y-4 border-black/[0.05]">
-              <div className="flex items-center gap-3 pb-2 border-b border-black/[0.05] mb-2">
-                <Phone className="text-emerald-600" size={20} />
-                <h2 className="text-sm font-bold text-[#1C1C1E]">التواصل والتفعيل</h2>
+            <div className="space-y-2">
+              <label className="px-4 text-[13px] font-medium text-[#8E8E93] uppercase tracking-tight">الاتصال والموقع</label>
+              <div className="bg-white rounded-[20px] overflow-hidden border border-black/5 divide-y divide-black/[0.05]">
+                <div className="p-4"><InputGroup label="الهاتف" value={profile.phone} onChange={v => setProfile({...profile, phone: v})} /></div>
+                <div className="p-4"><InputGroup label="الموقع" value={profile.location} onChange={v => setProfile({...profile, location: v})} /></div>
               </div>
-              <div className="space-y-4">
-                <InputGroup label="رقم الهاتف الأساسي" value={profile.phone} onChange={v => setProfile({...profile, phone: v})} />
-                <InputGroup label="البريد الإلكتروني للتفعيل" value={profile.email} onChange={v => setProfile({...profile, email: v})} />
-                <InputGroup label="الموقع / المدينة" value={profile.location} onChange={v => setProfile({...profile, location: v})} />
-                <InputGroup label="العنوان الكامل" value={profile.address} onChange={v => setProfile({...profile, address: v})} />
-              </div>
-            </GlassCard>
+            </div>
           </section>
         )}
 
         {activeTab === "shipping" && (
           <section className="space-y-6">
-            <GlassCard className="space-y-4 border-black/[0.05]">
-              <div className="flex items-center gap-3 pb-2 border-b border-black/[0.05] mb-2">
-                <Truck className="text-emerald-600" size={20} />
-                <h2 className="text-sm font-bold text-[#1C1C1E]">خيارات التوصيل</h2>
-              </div>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-[10px] font-bold text-black/40 mb-1 uppercase tracking-wider">ولاية الشحن الأساسية</label>
+            <div className="space-y-2">
+              <label className="px-4 text-[13px] font-medium text-[#8E8E93] uppercase tracking-tight">إعدادات الشحن</label>
+              <div className="bg-white rounded-[20px] overflow-hidden border border-black/5 divide-y divide-black/[0.05]">
+                <div className="p-4">
+                  <label className="block text-[11px] font-bold text-black/30 mb-1.5 uppercase">الولاية الأساسية</label>
                   <select 
                     value={profile.deliverWilaya}
                     onChange={(e) => setProfile({...profile, deliverWilaya: e.target.value})}
-                    className="w-full h-12 bg-white border border-black/[0.05] rounded-xl px-4 outline-none font-bold text-[#1C1C1E] appearance-none bg-[url('https://cdn-icons-png.flaticon.com/512/271/271210.png')] bg-[length:10px] bg-[left_16px_center] bg-no-repeat"
+                    className="w-full h-12 bg-[#F2F2F7] rounded-xl px-4 outline-none font-bold text-[#1C1C1E] appearance-none"
                   >
                     {ALGERIAN_WILAYAS.map(w => (
                       <option key={w.code} value={w.code}>{w.code} - {w.nameAr}</option>
                     ))}
                   </select>
                 </div>
-                <InputGroup label="رسوم التوصيل الافتراضية (دج)" value={profile.deliverFees.toString()} type="number" onChange={v => setProfile({...profile, deliverFees: Number(v)})} />
+                <div className="p-4"><InputGroup label="رسوم التوصيل (دج)" value={profile.deliverFees.toString()} type="number" onChange={v => setProfile({...profile, deliverFees: Number(v)})} /></div>
               </div>
-            </GlassCard>
-
-            <GlassCard className="space-y-4 border-black/[0.05]">
-              <div className="flex items-center gap-3 pb-2 border-b border-black/[0.05] mb-2">
-                <Shield className="text-emerald-600" size={20} />
-                <h2 className="text-sm font-bold text-[#1C1C1E]">السياسات والضمان</h2>
-              </div>
-              <div className="space-y-4">
-                <TextAreaGroup label="سياسة الاسترجاع" value={profile.returnPolicy} onChange={v => setProfile({...profile, returnPolicy: v})} />
-                <TextAreaGroup label="سياسة الاستبدال" value={profile.replacePolicy} onChange={v => setProfile({...profile, replacePolicy: v})} />
-                <TextAreaGroup label="سياسة استرداد الأموال" value={profile.refundPolicy} onChange={v => setProfile({...profile, refundPolicy: v})} />
-              </div>
-            </GlassCard>
+            </div>
           </section>
         )}
 
         {activeTab === "marketing" && (
           <section className="space-y-6">
-            <GlassCard className="space-y-4 border-black/[0.05]">
-              <div className="flex items-center gap-3 pb-2 border-b border-black/[0.05] mb-2">
-                <Share2 className="text-emerald-600" size={20} />
-                <h2 className="text-sm font-bold text-[#1C1C1E]">أدوات التتبع (Pixels)</h2>
+            <div className="space-y-2">
+              <label className="px-4 text-[13px] font-medium text-[#8E8E93] uppercase tracking-tight">أدوات الربط</label>
+              <div className="bg-white rounded-[20px] overflow-hidden border border-black/5 divide-y divide-black/[0.05]">
+                <div className="p-4"><InputGroup label="Google Analytics ID" placeholder="UA-XXXXX" value={""} onChange={() => {}} /></div>
+                <div className="p-4"><InputGroup label="Meta Pixel ID" placeholder="123456789" value={""} onChange={() => {}} /></div>
               </div>
-              <div className="space-y-4">
-                <InputGroup label="Google Analytics ID" placeholder="UA-XXXXX or G-XXXXX" value={""} onChange={() => {}} />
-                <InputGroup label="Meta Pixel ID" placeholder="123456789" value={""} onChange={() => {}} />
-                <InputGroup label="TikTok Pixel ID" placeholder="ABCDEFG" value={""} onChange={() => {}} />
-              </div>
-            </GlassCard>
-
-            <GlassCard className="space-y-4 border-black/[0.05]">
-              <div className="flex items-center gap-3 pb-2 border-b border-black/[0.05] mb-2">
-                <Globe className="text-emerald-600" size={20} />
-                <h2 className="text-sm font-bold text-[#1C1C1E]">اسم النطاق الخاص</h2>
-              </div>
-              <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
-                <p className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider leading-relaxed">
-                  يمكنك ربط دومين خاص بك (مثلاً: shop.dz) بصفحات الهبوط الخاصة بك. تواصل مع الدعم الفني للمساعدة.
-                </p>
-              </div>
-              <AppleButton className="w-full bg-blue-500/10 text-blue-600 border border-blue-500/10 shadow-none hover:bg-blue-500/20">تفعيل الدومين المخصص</AppleButton>
-            </GlassCard>
+            </div>
           </section>
         )}
       </main>
 
-      <div className="px-6 mt-8">
-        <AppleButton variant="danger" className="w-full" onClick={handleSignOut}>
+      <div className="px-6 mt-12 space-y-4">
+        <AppleButton variant="danger" className="w-full py-4 text-[17px]" onClick={handleSignOut}>
           تسجيل الخروج
-          <LogOut size={18} />
+          <LogOut size={20} />
         </AppleButton>
-        <p className="text-center text-black/20 text-[10px] font-black uppercase tracking-widest mt-4">
-          Dzayer SaaS v1.0.0
+        <p className="text-center text-[#AEAEB2] text-[11px] font-bold uppercase tracking-widest">
+          Ezzy Store Manager v1.2.0
         </p>
       </div>
     </div>
@@ -179,14 +154,14 @@ export default function Settings() {
 
 function InputGroup({ label, value, onChange, placeholder, type = "text" }: { label: string; value: string; onChange: (v: string) => void; placeholder?: string; type?: string }) {
   return (
-    <div>
-      <label className="block text-[10px] font-bold text-black/40 mb-1 uppercase tracking-wider">{label}</label>
+    <div className="flex items-center">
+      <label className="w-24 flex-shrink-0 text-[15px] font-bold text-[#1C1C1E]">{label}</label>
       <input 
         type={type} 
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full h-12 bg-white border border-black/[0.05] rounded-xl px-4 outline-none font-bold text-[#1C1C1E] focus:border-emerald-500/50 transition-all"
+        className="flex-1 h-8 bg-transparent outline-none font-medium text-[#8E8E93] text-left focus:text-emerald-600 transition-all placeholder:text-[#C7C7CC]"
       />
     </div>
   );

@@ -153,80 +153,110 @@ export default function LandingPageView() {
         </section>
 
         {/* Brand Info */}
-        <GlassCard className="flex items-center gap-3 p-3 bg-[#F2F2F7] border-black/[0.05]">
-          <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold">
-            {profile.companyName[0]}
-          </div>
-          <div className="flex-1">
-            <h3 className="text-sm font-bold">{profile.companyName}</h3>
-            <p className="text-[10px] text-black/40 font-medium">{profile.location} • شحن لجميع الولايات</p>
-          </div>
-          <div className="flex items-center gap-1 text-emerald-600">
-            <ShieldCheck size={16} />
-            <span className="text-[10px] font-bold">متجر موثوق</span>
-          </div>
-        </GlassCard>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex items-center gap-2 p-3 bg-[#F2F2F7] rounded-2xl border border-black/[0.05]">
-            <Truck size={20} className="text-emerald-600" />
-            <div className="flex flex-col">
-              <span className="text-[10px] font-bold">توصيل سريع</span>
-              <span className="text-[8px] text-black/40">لجميع الولايات</span>
+        <div className="px-6">
+          <div className="flex items-center gap-4 p-4 bg-[#F2F2F7] rounded-[24px] border border-black/5">
+            <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xl font-black shadow-lg shadow-emerald-500/20">
+              {profile.companyName[0]}
+            </div>
+            <div className="flex-1">
+              <h3 className="font-bold text-[#1C1C1E]">{profile.companyName}</h3>
+              <p className="text-[#8E8E93] text-[11px] font-medium flex items-center gap-1 mt-0.5">
+                <MapPin size={12} strokeWidth={2.5} className="text-emerald-500" />
+                {profile.location} • شحن لجميع الولايات
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <ShieldCheck size={20} className="text-emerald-500" strokeWidth={2.5} />
+              <span className="text-[10px] font-black text-emerald-600 uppercase tracking-tighter">موثوق</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 p-3 bg-[#F2F2F7] rounded-2xl border border-black/[0.05]">
-            <RotateCcw size={20} className="text-emerald-600" />
+        </div>
+
+        {/* Features Grid */}
+        <div className="px-6 grid grid-cols-2 gap-3">
+          <div className="flex items-center gap-3 p-4 bg-white rounded-[24px] border border-black/5">
+            <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600">
+              <Truck size={20} strokeWidth={2.5} />
+            </div>
             <div className="flex flex-col">
-              <span className="text-[10px] font-bold">إرجاع سهل</span>
-              <span className="text-[8px] text-black/40">حسب سياسة المتجر</span>
+              <span className="text-[11px] font-black text-[#1C1C1E] leading-none uppercase tracking-tighter">توصيل سريع</span>
+              <span className="text-[9px] text-[#8E8E93] font-bold mt-1">لجميع الولايات</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 p-4 bg-white rounded-[24px] border border-black/5">
+            <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600">
+              <RotateCcw size={20} strokeWidth={2.5} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[11px] font-black text-[#1C1C1E] leading-none uppercase tracking-tighter">ضمان الجودة</span>
+              <span className="text-[9px] text-[#8E8E93] font-bold mt-1">١٠٠٪ مضمون</span>
             </div>
           </div>
         </div>
 
         {/* Description */}
-        <section>
-          <h2 className="text-lg font-bold mb-3">وصف المنتج</h2>
-          <p className="text-black/60 leading-relaxed text-sm">
-            {product.description}
-          </p>
+        <section className="px-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-1.5 h-6 bg-emerald-500 rounded-full" />
+            <h2 className="text-xl font-black text-[#1C1C1E]">وصف المنتج</h2>
+          </div>
+          <div className="bg-[#F2F2F7]/50 rounded-[24px] p-6 border border-black/[0.03]">
+            <p className="text-[#48484A] leading-relaxed text-[16px] font-medium">
+              {product.description}
+            </p>
+          </div>
         </section>
 
         {/* Ordering Form */}
-        <section className="bg-black/5 rounded-[32px] p-8 space-y-6 border border-black/[0.05]">
-          <h2 className="text-xl font-bold text-center">أطلب الآن والدفع عند الاستلام</h2>
+        <section className="mx-4 bg-[#1C1C1E] rounded-[32px] p-8 space-y-8 shadow-2xl shadow-emerald-950/20">
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl font-black text-white">أرسل طلبك الآن</h2>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 rounded-full">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <p className="text-emerald-500 text-[11px] font-black uppercase tracking-widest leading-none">الدفع عند الاستلام</p>
+            </div>
+          </div>
           
-          <div className="space-y-4">
-            <div>
-              <label className="text-[10px] text-black/40 font-black uppercase tracking-widest mb-1.5 block">الاسم الكامل</label>
-              <input type="text" className="w-full h-14 bg-white border border-black/[0.05] rounded-2xl px-4 outline-none font-bold focus:border-emerald-500/50" placeholder="أدخل اسمك الكامل" />
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <label className="text-[12px] text-white/40 font-bold uppercase tracking-widest mr-2">الاسم الكامل</label>
+              <input type="text" className="w-full h-16 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none font-bold text-white focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-white/10" placeholder="أدخل اسمك الكامل" />
             </div>
-            <div>
-              <label className="text-[10px] text-black/40 font-black uppercase tracking-widest mb-1.5 block">رقم الهاتف</label>
-              <input type="tel" className="w-full h-14 bg-white border border-black/[0.05] rounded-2xl px-4 outline-none font-bold text-left focus:border-emerald-500/50" placeholder="0XXXXX XXXX" dir="ltr" />
+            <div className="space-y-2">
+              <label className="text-[12px] text-white/40 font-bold uppercase tracking-widest mr-2">رقم الهاتف</label>
+              <input type="tel" className="w-full h-16 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none font-bold text-white text-left focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-white/10" placeholder="0XXXXX XXXX" dir="ltr" />
             </div>
-            <div>
-              <label className="text-[10px] text-black/40 font-black uppercase tracking-widest mb-1.5 block">الولاية</label>
-              <select 
-                value={selectedWilaya}
-                onChange={(e) => setSelectedWilaya(e.target.value)}
-                className="w-full h-14 bg-white border border-black/[0.05] rounded-2xl px-4 outline-none font-bold appearance-none bg-[url('https://cdn-icons-png.flaticon.com/512/271/271210.png')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat focus:border-emerald-500/50"
-              >
-                <option value="">اختر ولايتك</option>
-                {ALGERIAN_WILAYAS.map(w => (
-                  <option key={w.code} value={w.code}>{w.code} - {w.nameAr}</option>
-                ))}
-              </select>
+            <div className="space-y-2">
+              <label className="text-[12px] text-white/40 font-bold uppercase tracking-widest mr-2">الولاية</label>
+              <div className="relative">
+                <select 
+                  value={selectedWilaya}
+                  onChange={(e) => setSelectedWilaya(e.target.value)}
+                  className="w-full h-16 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none font-bold text-white appearance-none focus:bg-white/10 focus:border-emerald-500/50 transition-all cursor-pointer"
+                >
+                  <option value="" className="text-black">اختر ولايتك</option>
+                  {ALGERIAN_WILAYAS.map(w => (
+                    <option key={w.code} value={w.code} className="text-black">{w.code} - {w.nameAr}</option>
+                  ))}
+                </select>
+                <div className="absolute left-6 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                  <ChevronLeft size={18} />
+                </div>
+              </div>
             </div>
           </div>
 
-          <AppleButton className="w-full py-10 rounded-[28px] text-2xl shadow-none" onClick={handleOrderSubmit}>
-            <ShoppingCart size={24} />
-            أطلب الآن - اضغط هنا
+          <AppleButton className="w-full py-12 rounded-[28px] text-2xl bg-emerald-500 hover:bg-emerald-600 border-none shadow-2xl shadow-emerald-500/40 transform active:scale-95 flex flex-col gap-0 select-none" onClick={handleOrderSubmit}>
+            <div className="flex items-center gap-3">
+              <ShoppingCart size={32} strokeWidth={2.5} />
+              <span className="font-black">تأكيد الطلب</span>
+            </div>
           </AppleButton>
           
-          <p className="text-[10px] text-center text-black/20 font-black uppercase tracking-widest">سنتصل بك لتأكيد طلبك قبل الشحن</p>
+          <div className="flex items-center justify-center gap-3 pt-2">
+            <ShieldCheck size={14} className="text-white/30" />
+            <p className="text-[11px] text-center text-white/30 font-bold uppercase tracking-widest">معلوماتك مشفرة ومحمية ١٠٠٪</p>
+          </div>
         </section>
 
         {/* Policies Footer */}
