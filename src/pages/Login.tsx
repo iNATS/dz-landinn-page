@@ -59,7 +59,7 @@ export default function Login() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full h-14 pr-12"
+                    className="w-full h-12 pr-12"
                     placeholder="email@example.com"
                   />
                 </div>
@@ -74,7 +74,7 @@ export default function Login() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full h-14 pr-12"
+                    className="w-full h-12 pr-12"
                     placeholder="••••••••"
                   />
                 </div>
@@ -83,7 +83,7 @@ export default function Login() {
 
             <AppleButton 
               type="submit" 
-              className="w-full h-14" 
+              className="w-full h-12" 
               disabled={loading}
             >
               {loading ? "جاري التحميل..." : "تسجيل الدخول"}
@@ -94,7 +94,7 @@ export default function Login() {
 
         <p className="text-center text-black/40 font-bold text-sm">
           ليس لديك حساب؟{" "}
-          <Link to="/register" className="text-emerald-600 hover:underline">
+          <Link to="/register" className="text-black font-bold hover:underline">
             ابدأ الآن مجاناً
           </Link>
         </p>

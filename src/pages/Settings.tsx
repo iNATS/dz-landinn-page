@@ -37,17 +37,17 @@ export default function Settings() {
   return (
     <div className="min-h-screen bg-[#F2F2F7] safe-top pb-32">
       <header className="px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
-        <button onClick={() => navigate("/dashboard")} className="p-2 -mr-2 text-emerald-600 active:opacity-50 transition-opacity">
+        <button onClick={() => navigate("/dashboard")} className="p-2 -mr-2 text-black active:opacity-50 transition-opacity">
           <ChevronLeft className="rotate-180" size={24} />
         </button>
         <h1 className="text-[17px] font-bold text-[#1C1C1E]">إعدادات المتجر</h1>
-        <button onClick={handleSave} className="text-emerald-600 font-bold text-[17px] active:opacity-50 transition-opacity">حفظ</button>
+        <button onClick={handleSave} className="text-black font-bold text-[17px] active:opacity-50 transition-opacity">حفظ</button>
       </header>
 
       {/* Profile Header */}
       <div className="px-6 py-8 flex flex-col items-center">
         <div className="w-24 h-24 rounded-full bg-white border border-black/5 shadow-sm p-1 mb-4">
-          <div className="w-full h-full rounded-full bg-emerald-500 flex items-center justify-center text-white text-3xl font-black">
+          <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-white text-3xl font-black">
             {profile.companyName[0]}
           </div>
         </div>
@@ -163,7 +163,7 @@ function InputGroup({ label, value, onChange, placeholder, type = "text" }: { la
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 h-8 bg-transparent outline-none font-medium text-[#8E8E93] text-left focus:text-emerald-600 transition-all placeholder:text-[#C7C7CC]"
+        className="flex-1 h-8 bg-transparent outline-none font-medium text-[#8E8E93] text-left focus:text-black transition-all placeholder:text-[#C7C7CC]"
       />
     </div>
   );
@@ -177,7 +177,7 @@ function TextAreaGroup({ label, value, onChange }: { label: string; value: strin
         rows={3}
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full bg-white border border-black/[0.05] rounded-xl p-4 outline-none font-medium text-[#1C1C1E] focus:border-emerald-500/50 transition-all"
+        className="w-full bg-white border border-black/[0.05] rounded-xl p-4 outline-none font-medium text-[#1C1C1E] focus:border-black/50 transition-all"
       />
     </div>
   );

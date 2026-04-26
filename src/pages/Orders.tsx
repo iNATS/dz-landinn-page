@@ -85,9 +85,9 @@ export default function Orders() {
                       <h3 className="font-black text-[#1C1C1E]">{order.customerName}</h3>
                       <div className={cn(
                         "px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-tighter",
-                        (order.status === "pending" || order.status === "جديد") ? "bg-emerald-500/10 text-emerald-600" :
-                        order.status === "قيد التوصيل" ? "bg-blue-500/10 text-blue-600" :
-                        "bg-gray-100 text-gray-400"
+                        (order.status === "pending" || order.status === "جديد") ? "bg-black/5 text-black" :
+                        order.status === "قيد التوصيل" ? "bg-black/5 text-black/60" :
+                        "bg-black/5 text-black/20"
                       )}>
                         {order.status === "pending" ? "جديد" : order.status}
                       </div>

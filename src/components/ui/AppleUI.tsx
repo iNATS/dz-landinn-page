@@ -39,7 +39,7 @@ export function AppleButton({
     primary: "active-green text-white disabled:opacity-50 disabled:cursor-not-allowed",
     secondary: "bg-black/5 text-black border border-black/5 hover:bg-black/10 disabled:opacity-50",
     danger: "bg-red-500/10 text-red-500 border border-red-500/10 disabled:opacity-50",
-    ghost: "bg-transparent text-emerald-600 disabled:opacity-50",
+    ghost: "bg-transparent text-black disabled:opacity-50",
   };
 
   return (

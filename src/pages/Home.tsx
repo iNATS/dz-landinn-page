@@ -13,12 +13,12 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 font-bold text-[10px] uppercase tracking-widest mb-6 border border-emerald-500/10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/5 text-black font-bold text-[10px] uppercase tracking-widest mb-6 border border-black/10">
             <Rocket size={14} />
             <span>منصة التجارة الإلكترونية رقم ١ في الجزائر</span>
           </div>
           <h1 className="text-4xl font-black tracking-tight leading-[1.1] mb-6">
-            حول منتجاتك إلى <span className="text-emerald-500">مبيعات</span> بلمسة واحدة
+            حول منتجاتك إلى <span className="text-black/60">مبيعات</span> بلمسة واحدة
           </h1>
           <p className="text-black/40 font-medium text-base leading-relaxed mb-10 max-w-md mx-auto">
             أنشئ صفحات هبوط احترافية لكل منتج، اربطها بخدمات الشحن، وابدأ في استقبال الطلبات اليوم.
@@ -26,11 +26,11 @@ export default function Home() {
           
           <div className="flex flex-col gap-4 max-w-sm mx-auto">
             <Link to="/register">
-              <AppleButton className="w-full py-8 rounded-[24px] text-lg">
+              <AppleButton className="w-full h-12 rounded-xl text-[16px] font-black">
                 ابدأ تجربتك المجانية
               </AppleButton>
             </Link>
-            <Link to="/login" className="text-[13px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
+            <Link to="/login" className="text-[13px] font-bold text-black/60 hover:text-black transition-colors">
               لديك حساب بالفعل؟ تسجيل الدخول
             </Link>
             <p className="text-[10px] text-black/20 font-black uppercase tracking-widest">بدون الحاجة لخبرة برمجية • تدعم الدفع بالدينار</p>
@@ -38,29 +38,29 @@ export default function Home() {
         </motion.div>
 
         {/* Decorative elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] -z-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-black/5 rounded-full blur-[120px] -z-0" />
       </section>
-
+      
       {/* Features */}
-      <section className="px-6 py-20 bg-[#F2F2F7]">
+      <section className="px-6 py-20 bg-white">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-black mb-4">كل ما تحتاجه للنجاح</h2>
-          <div className="w-16 h-1 bg-emerald-500 mx-auto rounded-full" />
+          <div className="w-16 h-1 bg-black mx-auto rounded-full" />
         </div>
 
         <div className="grid gap-6 max-w-2xl mx-auto">
           <FeatureCard 
-            icon={<Layout className="text-emerald-600" />}
+            icon={<Layout className="text-black" />}
             title="صفحات هبوط ذكية"
             desc="تصميمات Apple HIG عصرية تركز على التحويل وزيادة المبيعات."
           />
           <FeatureCard 
-            icon={<CreditCard className="text-emerald-600" />}
+            icon={<CreditCard className="text-black" />}
             title="ادفع لكل منتج"
             desc="نظام تسعير عادل، ادفع فقط مقابل ما تستخدمه من صفحات."
           />
           <FeatureCard 
-            icon={<Check className="text-emerald-600" />}
+            icon={<Check className="text-black" />}
             title="تكامل مع الشحن"
             desc="ربط تلقائي مع Yalidine و Nord-et-Sud لإدارة طلباتك بسهولة."
           />
@@ -70,15 +70,15 @@ export default function Home() {
       {/* Stats Bar */}
       <section className="px-6 py-8 bg-white border-y border-black/[0.05] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20">
         <div className="text-center">
-          <div className="text-2xl font-black text-emerald-600 tracking-tighter">10,000+</div>
+          <div className="text-2xl font-black text-black tracking-tighter">10,000+</div>
           <div className="text-[10px] text-black/40 uppercase font-black tracking-widest mt-1">منتج مفعل</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-black text-emerald-600 tracking-tighter">50M+</div>
+          <div className="text-2xl font-black text-black tracking-tighter">50M+</div>
           <div className="text-[10px] text-black/40 uppercase font-black tracking-widest mt-1">مبيعات كلية</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-black text-emerald-600 tracking-tighter">100%</div>
+          <div className="text-2xl font-black text-black tracking-tighter">100%</div>
           <div className="text-[10px] text-black/40 uppercase font-black tracking-widest mt-1">دعم فني جزائري</div>
         </div>
       </section>
@@ -95,7 +95,7 @@ export default function Home() {
 function FeatureCard({ icon, title, desc }: { icon: any; title: string; desc: string }) {
   return (
     <GlassCard className="flex items-start gap-4 p-6 bg-white border-black/[0.05]">
-      <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0">
+      <div className="w-12 h-12 rounded-2xl bg-black/5 flex items-center justify-center shrink-0">
         {icon}
       </div>
       <div>

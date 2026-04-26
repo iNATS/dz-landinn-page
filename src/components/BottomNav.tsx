@@ -26,7 +26,7 @@ export default function BottomNav() {
             to={item.path} 
             className={cn(
               "flex-1 flex flex-col items-center gap-1 transition-all active:scale-90",
-              isActive ? "text-emerald-600" : "text-[#8E8E93]"
+              isActive ? "text-black" : "text-[#8E8E93]"
             )}
           >
             <Icon size={24} strokeWidth={isActive ? 2.5 : 2.2} />

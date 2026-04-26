@@ -3,7 +3,7 @@
 
 @theme {
   --font-sans: "Inter", "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
-  --color-apple-green: #10B981;
+  --color-apple-green: #000000;
   --radius-ios: 20px;
 }
 
@@ -12,10 +12,10 @@
     @apply bg-white/70 backdrop-blur-xl border border-black/[0.05];
   }
   .glass-emerald {
-    @apply bg-emerald-50/70 backdrop-blur-xl border border-emerald-500/10;
+    @apply bg-black/5 backdrop-blur-xl border border-black/10;
   }
   .active-green {
-    @apply bg-emerald-500;
+    @apply bg-black text-white;
   }
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
@@ -32,12 +32,12 @@
 }
 
 body {
-  @apply font-sans bg-[#F2F2F7] text-[#1C1C1E];
+  @apply font-sans bg-[#FBFBFB] text-[#1C1C1E];
   -webkit-tap-highlight-color: transparent;
 }
 
 input, textarea, select {
-  @apply bg-white border border-black/[0.05] rounded-xl px-4 text-[#1C1C1E] focus:border-emerald-500/50 transition-all outline-none;
+  @apply bg-white border border-black/[0.05] rounded-xl px-4 text-[#1C1C1E] focus:border-black/50 transition-all outline-none;
 }
 
 label {

@@ -41,7 +41,8 @@ export default function LandingPageView() {
     setProfile(getProfile());
     
     if (p?.mainColor) {
-      document.documentElement.style.setProperty('--color-apple-green', p.mainColor);
+      // Force monochrome theme
+      document.documentElement.style.setProperty('--color-apple-green', '#000000');
     }
 
     const visitorInterval = setInterval(() => {
@@ -78,7 +79,7 @@ export default function LandingPageView() {
   if (!product || !profile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="w-10 h-10 rounded-full border-2 border-emerald-500 border-t-transparent animate-spin" />
+        <div className="w-10 h-10 rounded-full border-2 border-black border-t-transparent animate-spin" />
       </div>
     );
   }
@@ -87,11 +88,11 @@ export default function LandingPageView() {
   const discountPercent = product.discountPrice ? Math.round((discountAmount / product.price) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-[#FBFBFB] text-[#1C1C1E] font-sans overflow-x-hidden selection:bg-emerald-100" dir="rtl">
+    <div className="min-h-screen bg-[#FBFBFB] text-[#1C1C1E] font-sans overflow-x-hidden selection:bg-black/10" dir="rtl">
       {/* Top Floating Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-[60] px-4 py-3 bg-white/70 backdrop-blur-xl border-b border-black/5 flex justify-between items-center transition-all">
+      <nav className="fixed top-0 left-0 right-0 z-[60] px-4 py-3 bg-white/70 backdrop-blur-xl border-b border-black/5 flex justify-between items-center transition-all text-black">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white text-sm font-black">
+          <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm font-black">
             {profile.companyName[0]}
           </div>
           <span className="text-[15px] font-bold tracking-tight">{profile.companyName}</span>
@@ -130,14 +131,14 @@ export default function LandingPageView() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               className="bg-white rounded-[32px] p-8 w-full max-w-sm text-center border border-black/5"
             >
-              <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-black/5 text-black rounded-full flex items-center justify-center mx-auto mb-6">
                 <Check size={32} strokeWidth={3} />
               </div>
               <h2 className="text-xl font-black mb-2 text-[#1C1C1E]">شكراً لثقتك بنا!</h2>
               <p className="text-[#8E8E93] text-[15px] font-medium mb-8 leading-relaxed">
                 لقد استلمنا طلبك بنجاح. سنقوم بالاتصال بك قريباً على الرقم الذي زودتنا به لتأكيد الطلب.
               </p>
-              <AppleButton className="w-full py-4 text-[15px] font-black tracking-tight" onClick={() => setShowSuccess(false)}>حسناً، فهمت</AppleButton>
+              <AppleButton className="w-full h-12 text-[15px] font-black tracking-tight" onClick={() => setShowSuccess(false)}>حسناً، فهمت</AppleButton>
             </motion.div>
           </motion.div>
         )}
@@ -145,9 +146,9 @@ export default function LandingPageView() {
 
       <main className="pt-16 pb-24">
         {/* Banner Section / Counter */}
-        <div className="bg-emerald-50 py-2 px-4 flex items-center justify-center gap-2 overflow-hidden">
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-          <p className="text-emerald-700 text-[11px] font-bold tracking-tight whitespace-nowrap">
+        <div className="bg-black/5 py-2 px-4 flex items-center justify-center gap-2 overflow-hidden">
+          <div className="w-1.5 h-1.5 rounded-full bg-black animate-pulse shrink-0" />
+          <p className="text-black text-[11px] font-bold tracking-tight whitespace-nowrap">
             {visitorCount} أشخاص يشاهدون هذا المنتج الآن • آخر طلب منذ {lastOrderTime} دقائق
           </p>
         </div>
@@ -188,7 +189,7 @@ export default function LandingPageView() {
                 key={i} 
                 className={cn(
                   "h-1.5 rounded-full transition-all duration-300",
-                  activeImage === i ? "w-8 bg-emerald-500" : "w-1.5 bg-black/10"
+                  activeImage === i ? "w-8 bg-black" : "w-1.5 bg-black/10"
                 )} 
               />
             ))}
@@ -211,7 +212,7 @@ export default function LandingPageView() {
 
             <div className="flex flex-col gap-2">
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-black text-emerald-600">
+                <span className="text-3xl font-black text-black">
                   {(product.discountPrice || product.price).toLocaleString()} <small className="text-sm font-bold">دج</small>
                 </span>
                 {product.discountPrice && (
@@ -222,36 +223,36 @@ export default function LandingPageView() {
               </div>
               {discountPercent > 0 && (
                 <div className="flex items-center gap-2">
-                  <div className="bg-red-500 text-white px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-tight">
+                  <div className="bg-black text-white px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-tight">
                     توفير {discountPercent}%
                   </div>
-                  <span className="text-red-500 text-[11px] font-bold">عرض محدود ينتهي قريباً!</span>
+                  <span className="text-black/40 text-[11px] font-bold">عرض محدود ينتهي قريباً!</span>
                 </div>
               )}
             </div>
           </div>
 
           {/* Quick Features */}
-          <div className="bg-emerald-50/50 rounded-3xl p-5 border border-emerald-100 flex justify-between items-center">
+          <div className="bg-black/5 rounded-3xl p-5 border border-black/5 flex justify-between items-center">
             <div className="flex flex-col items-center gap-1 text-center">
-              <ShieldCheck size={20} className="text-emerald-600" />
-              <span className="text-[10px] font-black text-emerald-800 uppercase tracking-tight">ضمان ١٠٠٪</span>
+              <ShieldCheck size={20} className="text-black" />
+              <span className="text-[10px] font-black text-black uppercase tracking-tight">ضمان ١٠٠٪</span>
             </div>
-            <div className="w-px h-8 bg-emerald-200" />
+            <div className="w-px h-8 bg-black/10" />
             <div className="flex flex-col items-center gap-1 text-center">
-              <Truck size={20} className="text-emerald-600" />
-              <span className="text-[10px] font-black text-emerald-800 uppercase tracking-tight">توصيل سريع</span>
+              <Truck size={20} className="text-black" />
+              <span className="text-[10px] font-black text-black uppercase tracking-tight">توصيل سريع</span>
             </div>
-            <div className="w-px h-8 bg-emerald-200" />
+            <div className="w-px h-8 bg-black/10" />
             <div className="flex flex-col items-center gap-1 text-center">
-              <RotateCcw size={20} className="text-emerald-600" />
-              <span className="text-[10px] font-black text-emerald-800 uppercase tracking-tight">إرجاع سهل</span>
+              <RotateCcw size={20} className="text-black" />
+              <span className="text-[10px] font-black text-black uppercase tracking-tight">إرجاع سهل</span>
             </div>
           </div>
 
           <AppleButton 
             onClick={scrollToForm}
-            className="w-full py-10 rounded-[28px] text-[17px] font-black bg-[#1C1C1E] text-white flex items-center justify-center gap-3 border-none hover:bg-black active:scale-95 transition-all"
+            className="w-full h-[54px] rounded-[18px] text-[16px] font-black bg-[#1C1C1E] text-white flex items-center justify-center gap-3 border-none hover:bg-black active:scale-95 transition-all"
           >
             اطلب الآن وادفع عند الاستلام
             <ArrowDown size={20} className="animate-bounce" />
@@ -267,7 +268,7 @@ export default function LandingPageView() {
           {/* Description Section */}
           <section className="space-y-6 pt-8 border-t border-black/5">
             <div className="flex items-center gap-3">
-              <div className="w-1.5 h-6 bg-emerald-500 rounded-full" />
+              <div className="w-1.5 h-6 bg-black rounded-full" />
               <h2 className="text-lg font-black text-[#1C1C1E]">لماذا تشتري هذا المنتج؟</h2>
             </div>
             
@@ -283,7 +284,7 @@ export default function LandingPageView() {
                 { title: "توفير حقيقي", desc: "أفضل قيمة مقابل السعر في السوق الجزائري حالياً.", icon: Check }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-4 p-5 bg-white border border-black/5 rounded-[24px]">
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center text-black">
                     <item.icon size={20} strokeWidth={3} />
                   </div>
                   <div>
@@ -309,7 +310,7 @@ export default function LandingPageView() {
                 { step: "٣", label: "الاستلام", desc: "الدفع عند الباب" }
               ].map(st => (
                 <div key={st.step} className="flex flex-col items-center text-center space-y-3">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-black">
+                  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-sm font-black">
                     {st.step}
                   </div>
                   <div className="space-y-1">
@@ -324,7 +325,7 @@ export default function LandingPageView() {
           {/* FAQ */}
           <section className="space-y-6 pt-12">
             <div className="flex items-center gap-3">
-              <HelpCircle className="text-emerald-600" size={24} />
+              <HelpCircle className="text-black" size={24} />
               <h2 className="text-lg font-black text-[#1C1C1E]">الأسئلة الشائعة</h2>
             </div>
             <div className="space-y-3">
@@ -350,75 +351,75 @@ export default function LandingPageView() {
           <div className="grid grid-cols-2 gap-4 py-8">
             <div className="text-center space-y-1">
               <p className="text-2xl font-black text-[#1C1C1E]">٥٠٠+</p>
-              <p className="text-[11px] font-black text-emerald-600 uppercase tracking-widest">زبون سعيد</p>
+              <p className="text-[11px] font-black text-black uppercase tracking-widest">زبون سعيد</p>
             </div>
             <div className="text-center space-y-1">
               <p className="text-2xl font-black text-[#1C1C1E]">٥٨</p>
-              <p className="text-[11px] font-black text-emerald-600 uppercase tracking-widest">ولاية نشحن إليها</p>
+              <p className="text-[11px] font-black text-black uppercase tracking-widest">ولاية نشحن إليها</p>
             </div>
           </div>
 
           {/* The Order Form */}
           <section id="order-form" className="pt-8">
-            <div className="bg-[#1C1C1E] rounded-[32px] p-8 space-y-8 text-white relative overflow-hidden">
+            <div className="bg-white rounded-[32px] p-8 space-y-8 text-[#1C1C1E] border border-black/5 relative overflow-hidden">
               {/* Background accent */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl rounded-full translate-x-12 -translate-y-12" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-black/5 blur-3xl rounded-full translate-x-12 -translate-y-12" />
               
               <div className="text-center space-y-2 relative">
                 <h2 className="text-xl font-black">أدخل معلوماتك للطلب</h2>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <p className="text-white/40 text-[10px] font-black uppercase tracking-widest leading-none">خدمة التوصيل سريعة جداً</p>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/5 rounded-full">
+                  <div className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                  <p className="text-black/40 text-[10px] font-black uppercase tracking-widest leading-none">خدمة التوصيل سريعة جداً</p>
                 </div>
               </div>
               
               <div className="space-y-5 relative">
                 <div className="space-y-2">
-                  <label className="text-[11px] text-white/30 font-black uppercase tracking-widest mr-2">الاسم بالكامل</label>
-                  <input type="text" className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none font-bold text-white focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-white/10" placeholder="مثال: عمر بن بوزيد" />
+                  <label className="text-[11px] text-black/30 font-black uppercase tracking-widest mr-2">الاسم بالكامل</label>
+                  <input type="text" className="w-full h-12 bg-black/5 border border-black/10 rounded-2xl px-6 outline-none font-bold text-[#1C1C1E] focus:bg-black/10 focus:border-black/50 transition-all placeholder:text-black/10" placeholder="مثال: عمر بن بوزيد" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[11px] text-white/30 font-black uppercase tracking-widest mr-2">رقم الهاتف</label>
-                  <input type="tel" className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none font-bold text-white text-left focus:bg-white/10 focus:border-emerald-500/50 transition-all placeholder:text-white/10" placeholder="0XXXXX XXXX" dir="ltr" />
+                  <label className="text-[11px] text-black/30 font-black uppercase tracking-widest mr-2">رقم الهاتف</label>
+                  <input type="tel" className="w-full h-12 bg-black/5 border border-black/10 rounded-2xl px-6 outline-none font-bold text-[#1C1C1E] text-left focus:bg-black/10 focus:border-black/50 transition-all placeholder:text-black/10" placeholder="0XXXXX XXXX" dir="ltr" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[11px] text-white/30 font-black uppercase tracking-widest mr-2">الولاية</label>
+                  <label className="text-[11px] text-black/30 font-black uppercase tracking-widest mr-2">الولاية</label>
                   <div className="relative">
                     <select 
                       value={selectedWilaya}
                       onChange={(e) => setSelectedWilaya(e.target.value)}
-                      className="w-full h-15 bg-white/5 border border-white/10 rounded-2xl px-6 outline-none font-bold text-white appearance-none focus:bg-white/10 focus:border-emerald-500/50 transition-all cursor-pointer"
+                      className="w-full h-12 bg-black/5 border border-black/10 rounded-2xl px-6 outline-none font-bold text-[#1C1C1E] appearance-none focus:bg-black/10 focus:border-black/50 transition-all cursor-pointer"
                     >
                       <option value="" className="text-black">اختر ولايتك هنا</option>
                       {ALGERIAN_WILAYAS.map(w => (
                         <option key={w.code} value={w.code} className="text-black">{w.code} - {w.nameAr}</option>
                       ))}
                     </select>
-                    <div className="absolute left-6 top-1/2 -translate-y-1/2 pointer-events-none text-white/20">
+                    <div className="absolute left-6 top-1/2 -translate-y-1/2 pointer-events-none text-black/20">
                       <ChevronLeft size={16} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/5 p-5 rounded-2xl border border-white/5 space-y-3">
+              <div className="bg-black/5 p-5 rounded-2xl border border-black/5 space-y-3">
                 <div className="flex justify-between text-[13px] font-bold">
-                  <span className="text-white/40">سعر المنتج</span>
+                  <span className="text-black/40">سعر المنتج</span>
                   <span>{(product.discountPrice || product.price).toLocaleString()} دج</span>
                 </div>
                 <div className="flex justify-between text-[13px] font-bold">
-                  <span className="text-white/40">سعر التوصيل</span>
-                  <span className="text-emerald-400">حسب الولاية</span>
+                  <span className="text-black/40">سعر التوصيل</span>
+                  <span className="text-black">حسب الولاية</span>
                 </div>
-                <div className="w-full h-px bg-white/5" />
+                <div className="w-full h-px bg-black/5" />
                 <div className="flex justify-between text-[15px] font-black">
                   <span>المجموع</span>
-                  <span className="text-emerald-400">الدفع عند الاستلام</span>
+                  <span className="text-black">الدفع عند الاستلام</span>
                 </div>
               </div>
 
               <AppleButton 
-                className="w-full py-12 rounded-[28px] text-[19px] font-black bg-emerald-500 hover:bg-emerald-600 border-none transform active:scale-95 transition-all flex items-center justify-center gap-3"
+                className="w-full h-[58px] rounded-[18px] text-[17px] font-black bg-black hover:bg-black/80 text-white border-none transform active:scale-95 transition-all flex items-center justify-center gap-3"
                 onClick={handleOrderSubmit}
               >
                 <ShoppingCart size={24} strokeWidth={3} />
@@ -426,8 +427,8 @@ export default function LandingPageView() {
               </AppleButton>
               
               <div className="text-center space-y-1">
-                 <p className="text-[10px] text-white/20 font-bold uppercase tracking-widest leading-relaxed">سنتصل بك لتأكيد طلبك قبل الشحن مباشرة</p>
-                 <div className="flex items-center justify-center gap-2 opacity-20 bg-white/10 p-2 rounded-xl mt-4">
+                 <p className="text-[10px] text-black/20 font-bold uppercase tracking-widest leading-relaxed">سنتصل بك لتأكيد طلبك قبل الشحن مباشرة</p>
+                 <div className="flex items-center justify-center gap-2 opacity-20 bg-black/10 p-2 rounded-xl mt-4">
                    <ShieldAlert size={12} />
                    <span className="text-[9px] font-black uppercase tracking-tight">معلوماتك مشفرة ومحمية ١٠٠٪</span>
                  </div>
@@ -454,7 +455,7 @@ export default function LandingPageView() {
             
             <div className="text-center space-y-2 pb-12">
               <p className="text-[10px] text-[#AEAEB2] font-black uppercase tracking-[0.2em]">Copyright © {new Date().getFullYear()} {profile.companyName}</p>
-              <div className="flex items-center justify-center gap-1.5 text-emerald-600/40">
+              <div className="flex items-center justify-center gap-1.5 text-black/20">
                 <span className="text-[10px] font-black uppercase tracking-widest italic">Powered by Ezzy Store</span>
               </div>
             </div>
@@ -466,11 +467,11 @@ export default function LandingPageView() {
       <div className="sm:hidden fixed bottom-6 left-6 right-6 z-50">
         <AppleButton 
           onClick={scrollToForm}
-          className="w-full py-10 rounded-[28px] text-[16px] font-black bg-[#1C1C1E] text-white flex items-center justify-between px-8 border-none"
+          className="w-full h-[56px] rounded-[18px] text-[15px] font-black bg-[#1C1C1E] text-white flex items-center justify-between px-8 border-none"
         >
           <span>اطلب الآن</span>
           <div className="flex items-center gap-3">
-            <span className="text-emerald-400">{(product.discountPrice || product.price).toLocaleString()} دج</span>
+            <span className="text-white/60">{(product.discountPrice || product.price).toLocaleString()} دج</span>
             <ArrowDown size={18} />
           </div>
         </AppleButton>

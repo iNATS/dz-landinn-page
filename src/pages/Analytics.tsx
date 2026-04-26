@@ -6,10 +6,10 @@ import { cn } from "../lib/utils";
 
 export default function Analytics() {
   const stats = [
-    { label: "إجمالي المبيعات", value: "٢٥٠,٠٠٠ دج", delta: "+١٢٪", icon: DollarSign, color: "text-emerald-600", bg: "bg-emerald-100/50" },
-    { label: "زيارات المتجر", value: "١,٢٤٠", delta: "+٥٪", icon: Users, color: "text-blue-600", bg: "bg-blue-100/50" },
-    { label: "معدل التحويل", value: "٤.٥٪", delta: "+٢٪", icon: Activity, color: "text-purple-600", bg: "bg-purple-100/50" },
-    { label: "عدد الطلبات", value: "٨٦", delta: "+٨٪", icon: ShoppingCart, color: "text-orange-600", bg: "bg-orange-100/50" },
+    { label: "إجمالي المبيعات", value: "٢٥٠,٠٠٠ دج", delta: "+١٢٪", icon: DollarSign, color: "text-black", bg: "bg-black/5" },
+    { label: "زيارات المتجر", value: "١,٢٤٠", delta: "+٥٪", icon: Users, color: "text-black", bg: "bg-black/5" },
+    { label: "معدل التحويل", value: "٤.٥٪", delta: "+٢٪", icon: Activity, color: "text-black", bg: "bg-black/5" },
+    { label: "عدد الطلبات", value: "٨٦", delta: "+٨٪", icon: ShoppingCart, color: "text-black", bg: "bg-black/5" },
   ];
 
   return (
@@ -22,17 +22,17 @@ export default function Analytics() {
 
       <main className="px-6 mt-6 space-y-6">
         {/* Main Chart Card */}
-        <div className="bg-[#1C1C1E] rounded-[32px] p-6 text-white border border-white/5">
+        <div className="bg-white rounded-[32px] p-6 text-[#1C1C1E] border border-black/5">
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h2 className="text-white/40 text-[11px] font-bold uppercase tracking-widest leading-none mb-2">أرباح اليوم</h2>
+              <h2 className="text-[#8E8E93] text-[11px] font-bold uppercase tracking-widest leading-none mb-2">أرباح اليوم</h2>
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-black">١٢,٥٠٠ دج</span>
-                <span className="text-emerald-400 text-xs font-bold">+١٠٪</span>
+                <span className="text-black/40 text-xs font-bold">+١٠٪</span>
               </div>
             </div>
-            <div className="p-3 bg-white/10 rounded-2xl">
-              <TrendingUp size={24} className="text-white" />
+            <div className="p-3 bg-black/5 rounded-2xl">
+              <TrendingUp size={24} className="text-black" />
             </div>
           </div>
           
@@ -40,7 +40,7 @@ export default function Analytics() {
             {[35, 65, 45, 85, 55, 95, 75, 45, 65, 85, 75, 95].map((h, i) => (
               <div 
                 key={i} 
-                className="flex-1 bg-emerald-500/30 rounded-t-lg transition-all hover:bg-emerald-500 cursor-pointer group relative"
+                className="flex-1 bg-black/10 rounded-t-lg transition-all hover:bg-black cursor-pointer group relative"
                 style={{ height: `${h}%` }}
               >
                 <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">
@@ -59,7 +59,7 @@ export default function Analytics() {
                 <div className={cn("p-2 rounded-xl", s.bg)}>
                   <s.icon size={18} className={s.color} />
                 </div>
-                <div className="flex items-center text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                <div className="flex items-center text-[10px] font-bold text-black bg-black/5 px-1.5 py-0.5 rounded-full">
                   <ArrowUpRight size={10} />
                   {s.delta}
                 </div>
@@ -73,7 +73,7 @@ export default function Analytics() {
         {/* Insights Card */}
         <div className="bg-white rounded-[24px] p-6 border border-black/5">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1.5 h-5 bg-emerald-500 rounded-full" />
+            <div className="w-1.5 h-5 bg-black rounded-full" />
             <h3 className="text-lg font-bold">المنتجات الأكثر مبيعاً</h3>
           </div>
           

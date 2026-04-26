@@ -69,7 +69,7 @@ export default function Register() {
                     required
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="w-full h-14 pr-12"
+                    className="w-full h-12 pr-12"
                     placeholder="متجري الإلكتروني"
                   />
                 </div>
@@ -84,7 +84,7 @@ export default function Register() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full h-14 pr-12"
+                    className="w-full h-12 pr-12"
                     placeholder="email@example.com"
                   />
                 </div>
@@ -99,7 +99,7 @@ export default function Register() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full h-14 pr-12"
+                    className="w-full h-12 pr-12"
                     placeholder="••••••••"
                   />
                 </div>
@@ -108,7 +108,7 @@ export default function Register() {
 
             <AppleButton 
               type="submit" 
-              className="w-full h-14" 
+              className="w-full h-12" 
               disabled={loading}
             >
               {loading ? "جاري التحميل..." : "إنشاء حساب مجاني"}
@@ -119,7 +119,7 @@ export default function Register() {
 
         <p className="text-center text-black/40 font-bold text-sm">
           لديك حساب بالفعل؟{" "}
-          <Link to="/login" className="text-emerald-600 hover:underline">
+          <Link to="/login" className="text-black font-bold hover:underline">
             تسجيل الدخول
           </Link>
         </p>

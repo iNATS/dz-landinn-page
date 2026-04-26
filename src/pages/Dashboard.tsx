@@ -31,9 +31,9 @@ export default function Dashboard() {
           </p>
         </div>
         <Link to="/settings" className="relative group">
-          <div className="w-11 h-11 rounded-full overflow-hidden border border-black/5 bg-white p-0.5 ring-2 ring-emerald-500/0 group-active:ring-emerald-500/20 transition-all">
+          <div className="w-11 h-11 rounded-full overflow-hidden border border-black/5 bg-white p-0.5 ring-2 ring-black/0 group-active:ring-black/20 transition-all">
             <img 
-              src={`https://ui-avatars.com/api/?name=${user?.email}&background=10B981&color=fff`} 
+              src={`https://ui-avatars.com/api/?name=${user?.email}&background=000&color=fff`} 
               alt="Avatar" 
               className="w-full h-full rounded-full object-cover"
             />
@@ -44,10 +44,10 @@ export default function Dashboard() {
       <main className="px-6 space-y-6 mt-6">
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
-          <GlassCard className="bg-emerald-50/50 border-emerald-500/10 p-4">
+          <GlassCard className="bg-black/5 border-black/10 p-4">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-xl bg-emerald-100/50">
-                <Package className="text-emerald-600" size={18} />
+              <div className="p-2 rounded-xl bg-black/10">
+                <Package className="text-black" size={18} />
               </div>
               <span className="text-[11px] text-black/40 font-bold uppercase tracking-wider">المنتجات</span>
             </div>
@@ -66,21 +66,21 @@ export default function Dashboard() {
 
         {/* Action Button */}
         <AppleButton 
-          className="w-full h-14 rounded-2xl text-[15px] font-bold active-green"
+          className="w-full h-12 rounded-xl text-[14px] font-bold active-green"
           onClick={() => navigate("/product/new")}
         >
-          <Plus size={20} strokeWidth={3} />
+          <Plus size={18} strokeWidth={3} />
           إضافة منتج جديد
         </AppleButton>
 
         {/* Product List */}
         <section>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-sm font-bold text-emerald-600 uppercase tracking-widest flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <h2 className="text-sm font-bold text-black uppercase tracking-widest flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
               منتجاتك
             </h2>
-            <Link to="/orders" className="text-black/40 font-bold text-[10px] uppercase hover:text-emerald-600 transition-colors">عرض الكل</Link>
+            <Link to="/orders" className="text-black/40 font-bold text-[10px] uppercase hover:text-black transition-colors">عرض الكل</Link>
           </div>
           
           <div className="space-y-3">
@@ -107,11 +107,11 @@ export default function Dashboard() {
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-[#1C1C1E] truncate">{product.name}</h3>
                     <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-[17px] font-black text-emerald-600 tabular-nums">{product.price} <small className="text-[10px]">DZD</small></span>
+                      <span className="text-[17px] font-black text-black tabular-nums">{product.price.toLocaleString()} <small className="text-[10px]">DZD</small></span>
                       {product.isActive ? (
-                        <div className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 text-[9px] font-black uppercase tracking-tight">نشط</div>
+                        <div className="px-2 py-0.5 rounded-full bg-black/5 text-black text-[9px] font-black uppercase tracking-tight">نشط</div>
                       ) : (
-                        <div className="px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-600 text-[9px] font-black uppercase tracking-tight">مسودة</div>
+                        <div className="px-2 py-0.5 rounded-full bg-black/5 text-black/40 text-[9px] font-black uppercase tracking-tight">مسودة</div>
                       )}
                     </div>
                   </div>
@@ -123,14 +123,14 @@ export default function Dashboard() {
                         navigator.clipboard.writeText(url);
                         alert("تم نسخ رابط المنتج بنجاح!");
                       }}
-                      className="p-2 bg-blue-50 text-blue-600 rounded-lg active:scale-90 transition-transform"
+                      className="p-2 bg-black/5 text-black rounded-lg active:scale-90 transition-transform"
                       title="نسخ الرابط"
                     >
                       <Share2 size={18} />
                     </button>
                     <button 
                       onClick={(e) => { e.stopPropagation(); navigate(`/p/${product.slug}`); }}
-                      className="p-2 bg-emerald-50 text-emerald-600 rounded-lg active:scale-90 transition-transform"
+                      className="p-2 bg-black/5 text-black rounded-lg active:scale-90 transition-transform"
                       title="معاينة الصفحة"
                     >
                       <Globe size={18} />
