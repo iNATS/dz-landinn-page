@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Plus, Package, ShoppingBag, Settings as SettingsIcon, LayoutGrid, TrendingUp, ChevronRight } from "lucide-react";
+import { Plus, Package, ShoppingBag, Settings as SettingsIcon, LayoutGrid, TrendingUp, ChevronRight, Globe, Share2 } from "lucide-react";
 import { motion } from "motion/react";
 import { GlassCard, AppleButton } from "../components/ui/AppleUI";
 import { getProducts, getProfile } from "../store";
 import { useAuth } from "../contexts/AuthContext";
 import { Product } from "../types";
+import BottomNav from "../components/BottomNav";
 
 export default function Dashboard() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -22,10 +23,10 @@ export default function Dashboard() {
       {/* Header */}
       <header className="px-6 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
         <div className="flex flex-col gap-0.5">
-          <h1 className="text-2xl font-bold tracking-tight text-[#1C1C1E]">
+          <h1 className="text-xl font-bold tracking-tight text-[#1C1C1E]">
             مرحباً، {user?.user_metadata?.company_name || profile?.firstName} 👋
           </h1>
-          <p className="text-[#8E8E93] text-[11px] uppercase font-bold tracking-wider">
+          <p className="text-[#8E8E93] text-[10px] uppercase font-bold tracking-wider">
             لوحة التحكم الخاصة بك
           </p>
         </div>
@@ -65,10 +66,10 @@ export default function Dashboard() {
 
         {/* Action Button */}
         <AppleButton 
-          className="w-full py-6 rounded-[20px] text-lg active-green shadow-none"
+          className="w-full h-14 rounded-2xl text-[15px] font-bold active-green"
           onClick={() => navigate("/product/new")}
         >
-          <Plus size={24} />
+          <Plus size={20} strokeWidth={3} />
           إضافة منتج جديد
         </AppleButton>
 
@@ -79,7 +80,7 @@ export default function Dashboard() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               منتجاتك
             </h2>
-            <Link to="/products" className="text-black/40 font-bold text-[10px] uppercase hover:text-emerald-600 transition-colors">عرض الكل</Link>
+            <Link to="/orders" className="text-black/40 font-bold text-[10px] uppercase hover:text-emerald-600 transition-colors">عرض الكل</Link>
           </div>
           
           <div className="space-y-3">
@@ -94,7 +95,7 @@ export default function Dashboard() {
                 <div key={product.id}>
                   <div 
                     className="flex items-center gap-4 p-3 bg-white rounded-[18px] border border-black/5 active:scale-[0.98] transition-all cursor-pointer"
-                    onClick={() => navigate(`/product/edit/${product.id}`)}
+                    onClick={() => navigate(`/product/details/${product.id}`)}
                   >
                   <div className="w-16 h-16 rounded-xl bg-[#F2F2F7] flex-shrink-0 overflow-hidden border border-black/5">
                     {product.photos[0] ? (
@@ -114,7 +115,28 @@ export default function Dashboard() {
                       )}
                     </div>
                   </div>
-                  <ChevronRight size={18} className="text-[#C7C7CC] flex-shrink-0" />
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={(e) => { 
+                        e.stopPropagation(); 
+                        const url = `${window.location.origin}/p/${product.slug}`;
+                        navigator.clipboard.writeText(url);
+                        alert("تم نسخ رابط المنتج بنجاح!");
+                      }}
+                      className="p-2 bg-blue-50 text-blue-600 rounded-lg active:scale-90 transition-transform"
+                      title="نسخ الرابط"
+                    >
+                      <Share2 size={18} />
+                    </button>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); navigate(`/p/${product.slug}`); }}
+                      className="p-2 bg-emerald-50 text-emerald-600 rounded-lg active:scale-90 transition-transform"
+                      title="معاينة الصفحة"
+                    >
+                      <Globe size={18} />
+                    </button>
+                    <ChevronRight size={18} className="text-[#C7C7CC] flex-shrink-0" />
+                  </div>
                   </div>
                 </div>
               ))
@@ -122,26 +144,7 @@ export default function Dashboard() {
           </div>
         </section>
       </main>
-
-      {/* Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-black/5 px-6 py-2.5 flex justify-between items-center safe-bottom z-50">
-        <Link to="/dashboard" className="flex-1 flex flex-col items-center gap-1 text-emerald-600">
-          <LayoutGrid size={24} strokeWidth={2.5} />
-          <span className="text-[10px] font-bold">المنتجات</span>
-        </Link>
-        <Link to="/products" className="flex-1 flex flex-col items-center gap-1 text-[#8E8E93]">
-          <ShoppingBag size={24} strokeWidth={2.2} />
-          <span className="text-[10px] font-bold">الطلبات</span>
-        </Link>
-        <Link to="/analytics" className="flex-1 flex flex-col items-center gap-1 text-[#8E8E93]">
-          <TrendingUp size={24} strokeWidth={2.2} />
-          <span className="text-[10px] font-bold">الرؤى</span>
-        </Link>
-        <Link to="/settings" className="flex-1 flex flex-col items-center gap-1 text-[#8E8E93]">
-          <SettingsIcon size={24} strokeWidth={2.2} />
-          <span className="text-[10px] font-bold">المتجر</span>
-        </Link>
-      </nav>
+      <BottomNav />
     </div>
   );
 }

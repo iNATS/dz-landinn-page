@@ -59,12 +59,12 @@ export default function ProductEditor() {
   return (
     <div className="min-h-screen bg-[#F2F2F7] safe-top pb-10">
       {/* Header */}
-      <header className="px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/[0.05]">
-        <button onClick={() => navigate("/dashboard")} className="p-2 -mr-2">
-          <ChevronLeft className="text-emerald-600 rotate-180" />
+      <header className="px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-black/5">
+        <button onClick={() => navigate("/dashboard")} className="p-2 -mr-2 text-emerald-600 active:opacity-50 transition-opacity">
+          <ChevronLeft className="rotate-180" size={24} />
         </button>
-        <h1 className="text-lg font-bold text-[#1C1C1E]">{id ? "تعديل المنتج" : "إنشاء صفحة منتج"}</h1>
-        <div className="w-10" /> {/* Spacer */}
+        <h1 className="text-[17px] font-bold text-[#1C1C1E]">{id ? "تعديل المنتج" : "إنشاء منتج جديد"}</h1>
+        <button onClick={handleSave} className="text-emerald-600 font-bold text-[17px] active:opacity-50 transition-opacity">حفظ</button>
       </header>
 
       {/* Progress Bar */}
@@ -139,7 +139,7 @@ export default function ProductEditor() {
                   />
                 </div>
               </GlassCard>
-              <AppleButton className="w-full h-14 shadow-none" onClick={() => setStep("appearance")}>
+              <AppleButton className="w-full h-14" onClick={() => setStep("appearance")}>
                 التالي: المظهر والستايل
               </AppleButton>
             </motion.div>
@@ -163,7 +163,7 @@ export default function ProductEditor() {
                           onClick={() => setFormData({...formData, mainColor: color})}
                           className={cn(
                             "w-10 h-10 rounded-full border-2 transition-all flex-shrink-0",
-                            formData.mainColor === color ? "border-white scale-110 shadow-lg" : "border-black/5 scale-100"
+                            formData.mainColor === color ? "border-white scale-110" : "border-black/5 scale-100"
                           )}
                           style={{ backgroundColor: color }}
                         />
@@ -176,7 +176,7 @@ export default function ProductEditor() {
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-bold text-[#1C1C1E]">تأثير الزجاج (Glassmorphism)</span>
                     <div className="w-10 h-5 bg-emerald-500 rounded-full relative p-1 cursor-pointer">
-                      <div className="w-3 h-3 bg-white rounded-full mr-auto shadow-sm" />
+                      <div className="w-3 h-3 bg-white rounded-full mr-auto" />
                     </div>
                   </div>
                   <p className="text-[10px] text-black/40 font-medium">سيتم تطبيق تأثير شفاف وجمالي احترافي على جميع مكونات صفحة الهبوط.</p>
@@ -184,8 +184,8 @@ export default function ProductEditor() {
               </GlassCard>
               
               <div className="flex gap-4">
-                <AppleButton variant="secondary" className="flex-1 shadow-none" onClick={() => setStep("basic")}>السابق</AppleButton>
-                <AppleButton className="flex-[2] shadow-none" onClick={() => setStep("media")}>التالي: صور المنتج</AppleButton>
+                <AppleButton variant="secondary" className="flex-1" onClick={() => setStep("basic")}>السابق</AppleButton>
+                <AppleButton className="flex-[2]" onClick={() => setStep("media")}>التالي: صور المنتج</AppleButton>
               </div>
             </motion.div>
           )}
@@ -226,8 +226,8 @@ export default function ProductEditor() {
               </GlassCard>
               
               <div className="flex gap-4">
-                <AppleButton variant="secondary" className="flex-1 shadow-none" onClick={() => setStep("appearance")}>السابق</AppleButton>
-                <AppleButton className="flex-[2] shadow-none" onClick={() => setStep("payment")}>التالي: الشحن والدفع</AppleButton>
+                <AppleButton variant="secondary" className="flex-1" onClick={() => setStep("appearance")}>السابق</AppleButton>
+                <AppleButton className="flex-[2]" onClick={() => setStep("payment")}>التالي: الشحن والدفع</AppleButton>
               </div>
             </motion.div>
           )}
@@ -272,18 +272,18 @@ export default function ProductEditor() {
                 </div>
 
                 <div className="space-y-3">
-                  <AppleButton className="w-full bg-[#E4001B] active:bg-[#AF0011] h-14 border-none shadow-none">
+                  <AppleButton className="w-full bg-[#E4001B] active:bg-[#AF0011] h-14 border-none">
                     بريدي موب (BaridiMob)
                   </AppleButton>
-                  <AppleButton className="w-full bg-[#00AEEF] active:bg-[#0089bd] h-14 border-none shadow-none">
+                  <AppleButton className="w-full bg-[#00AEEF] active:bg-[#0089bd] h-14 border-none">
                     بطاقة ذهبية / CIB (Chargily)
                   </AppleButton>
                 </div>
               </GlassCard>
               
               <div className="flex gap-4">
-                <AppleButton variant="secondary" className="flex-1 shadow-none" onClick={() => setStep("media")}>السابق</AppleButton>
-                <AppleButton className="flex-[2] shadow-none" onClick={handleSave}>
+                <AppleButton variant="secondary" className="flex-1" onClick={() => setStep("media")}>السابق</AppleButton>
+                <AppleButton className="flex-[2]" onClick={handleSave}>
                   تفعيل الصفحة الآن
                 </AppleButton>
               </div>

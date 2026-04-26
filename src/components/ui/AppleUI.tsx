@@ -13,7 +13,7 @@ export function GlassCard({ children, className, onClick }: { children: React.Re
       whileHover={onClick ? { scale: 0.98 } : {}}
       whileTap={onClick ? { scale: 0.95 } : {}}
       onClick={onClick}
-      className={cn("glass rounded-[20px] p-4", className)}
+      className={cn("glass rounded-[20px] p-4 border border-black/5", className)}
     >
       {children}
     </motion.div>
@@ -50,7 +50,7 @@ export function AppleButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "h-12 px-6 rounded-[14px] font-semibold text-center transition-colors flex items-center justify-center gap-2",
+        "h-12 px-6 rounded-[14px] font-semibold text-center transition-all flex items-center justify-center gap-2 border-none",
         variants[variant],
         className
       )}

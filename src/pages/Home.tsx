@@ -17,18 +17,21 @@ export default function Home() {
             <Rocket size={14} />
             <span>منصة التجارة الإلكترونية رقم ١ في الجزائر</span>
           </div>
-          <h1 className="text-5xl font-black tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-4xl font-black tracking-tight leading-[1.1] mb-6">
             حول منتجاتك إلى <span className="text-emerald-500">مبيعات</span> بلمسة واحدة
           </h1>
-          <p className="text-black/40 font-medium text-lg leading-relaxed mb-10 max-w-md mx-auto">
+          <p className="text-black/40 font-medium text-base leading-relaxed mb-10 max-w-md mx-auto">
             أنشئ صفحات هبوط احترافية لكل منتج، اربطها بخدمات الشحن، وابدأ في استقبال الطلبات اليوم.
           </p>
           
           <div className="flex flex-col gap-4 max-w-sm mx-auto">
-            <Link to="/dashboard">
-              <AppleButton className="w-full py-8 rounded-[24px] text-xl shadow-none">
+            <Link to="/register">
+              <AppleButton className="w-full py-8 rounded-[24px] text-lg">
                 ابدأ تجربتك المجانية
               </AppleButton>
+            </Link>
+            <Link to="/login" className="text-[13px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
+              لديك حساب بالفعل؟ تسجيل الدخول
             </Link>
             <p className="text-[10px] text-black/20 font-black uppercase tracking-widest">بدون الحاجة لخبرة برمجية • تدعم الدفع بالدينار</p>
           </div>

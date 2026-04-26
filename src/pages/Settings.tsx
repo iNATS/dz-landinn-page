@@ -7,6 +7,7 @@ import { getProfile, saveProfile } from "../store";
 import { UserProfile } from "../types";
 import { ALGERIAN_WILAYAS } from "../constants";
 import { useAuth } from "../contexts/AuthContext";
+import BottomNav from "../components/BottomNav";
 
 export default function Settings() {
   const navigate = useNavigate();
@@ -148,6 +149,7 @@ export default function Settings() {
           Ezzy Store Manager v1.2.0
         </p>
       </div>
+      <BottomNav />
     </div>
   );
 }

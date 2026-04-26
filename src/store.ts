@@ -31,23 +31,9 @@ export const saveProfile = (profile: UserProfile) => {
   localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
 };
 
-// Initial setup with mock data if empty
-export const initMockData = () => {
+// Initial setup - only if essential
+export const initAppData = () => {
   if (!getProfile()) {
-    saveProfile({
-      id: "user-1",
-      firstName: "Ahmed",
-      lastName: "Algiers",
-      companyName: "Dzayer Shop",
-      email: "contact@dzayer.com",
-      phone: "0555001122",
-      location: "Alger Centre",
-      address: "123 Rue Didouche Mourad",
-      deliverWilaya: "16",
-      deliverFees: 500,
-      refundPolicy: "Refund within 7 days if product is damaged.",
-      replacePolicy: "Replace within 15 days.",
-      returnPolicy: "Return in original packaging.",
-    });
+    // Keep a basic empty profile or handle it in register
   }
 };
